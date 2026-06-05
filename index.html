@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoPulse // Dashboard Finanziaria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-bolt-lightning"></i> <span>CryptoPulse</span>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="search-crypto" placeholder="Cerca crypto (es. bitcoin)...">
+                <button id="add-watchlist-btn"><i class="fa-solid fa-plus"></i></button>
+            </div>
+
+            <div class="watchlist-section">
+                <h2>La tua Watchlist</h2>
+                <div id="watchlist-container" class="watchlist-list">
+                    </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div id="status-message" class="status-message hidden">Seleziona o cerca una moneta per visualizzare i dettagli.</div>
+
+            <div id="crypto-details" class="details-wrapper">
+                <header class="crypto-header">
+                    <div class="crypto-title-area">
+                        <h1 id="coin-name">Bitcoin <span id="coin-symbol">BTC</span></h1>
+                    </div>
+                    <div class="crypto-price-area">
+                        <div id="coin-price">€42,500.00</div>
+                        <div id="coin-change" class="price-badge positive">+2.4%</div>
+                    </div>
+                </header>
+
+                <section class="chart-container">
+                    <div class="chart-timeframes">
+                        <button class="tf-btn active" data-days="1">24h</button>
+                        <button class="tf-btn" data-days="7">7 Giorni</button>
+                        <button class="tf-btn" data-days="30">30 Giorni</button>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <canvas id="cryptoChart"></canvas>
+                    </div>
+                </section>
+
+                <section class="widgets-grid">
+                    <div class="widget-card converter">
+                        <h3><i class="fa-solid fa-calculator"></i> Convertitore Rapido</h3>
+                        <div class="converter-inputs">
+                            <div class="input-group">
+                                <span id="calc-crypto-symbol">BTC</span>
+                                <input type="number" id="crypto-input" value="1" step="any">
+                            </div>
+                            <div class="converter-icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+                            <div class="input-group">
+                                <span>EUR (€)</span>
+                                <input type="number" id="fiat-input" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget-card stats">
+                        <h3><i class="fa-solid fa-chart-pie"></i> Dati di Mercato</h3>
+                        <div class="stats-list">
+                            <div class="stat-item">
+                                <span>Market Cap</span>
+                                <span id="market-cap">€--</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Volume (24h)</span>
+                                <span id="total-volume">€--</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Massimo (24h)</span>
+                                <span id="high-24h" class="text-green">€--</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Minimo (24h)</span>
+                                <span id="low-24h" class="text-red">€--</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
